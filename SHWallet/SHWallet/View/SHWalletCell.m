@@ -79,6 +79,7 @@
 #pragma mark - Layout
 - (void)setupLayout {
     CGFloat padding = 10.0f;
+    CGFloat labHeight = 20.0f;
     [_cardImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.contentView).offset(padding);
         make.top.mas_equalTo(self.contentView).offset(padding);
@@ -89,14 +90,31 @@
     [_cardBankLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_cardImageView.mas_top).offset(padding);
         make.left.mas_equalTo(_cardImageView.mas_left).offset(padding);
+        make.right.mas_equalTo(_cardImageView.mas_right).offset(-padding);
+        make.height.equalTo(@(labHeight));
+    }];
+    [_cardNumberLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_cardBankLab.mas_bottom).offset(padding);
+        make.left.mas_equalTo(_cardImageView.mas_left).offset(padding);
+        make.right.mas_equalTo(_cardImageView.mas_right).offset(-padding);
+        make.height.equalTo(@(labHeight));
+    }];
+    [_cardOther mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_cardNumberLab.mas_bottom).offset(padding);
+        make.left.mas_equalTo(_cardImageView.mas_left).offset(padding);
+        make.right.mas_equalTo(_cardImageView.mas_right).offset(-padding);
+        make.height.equalTo(@(labHeight));
     }];
 }
 
 - (void)setWalletModel:(SHWalletModel *)walletModel {
     _walletModel = walletModel;
+    _cardBankLab.text = _walletModel.cardBank;
+    _cardNumberLab.text = _walletModel.cardNum;
+    _cardNumberLab.text = _walletModel.cardOther;
 }
-- (CAGradientLayer *)gradientLayer
-{
+
+- (CAGradientLayer *)gradientLayer {
     if (!_gradientLayer) {
         _gradientLayer = [CAGradientLayer layer];
         _gradientLayer.colors = @[(__bridge id)RGB(kArcColor, kArcColor, kArcColor).CGColor, (__bridge id)RGB(kArcColor, kArcColor, kArcColor).CGColor];

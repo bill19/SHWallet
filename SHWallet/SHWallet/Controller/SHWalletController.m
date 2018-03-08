@@ -182,7 +182,7 @@ static NSString *KcardCvv = @"Cvv";
  */
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewRowAction *action0 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+    UITableViewRowAction *delAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         // 删除模型
         [self.tableDataSource removeObjectAtIndex:indexPath.row];
         [self savaSource];
@@ -190,11 +190,11 @@ static NSString *KcardCvv = @"Cvv";
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }];
 
-    UITableViewRowAction *action1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"拷贝" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+    UITableViewRowAction *copyAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"拷贝" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         [self longCopy:self.tableDataSource[indexPath.row]];
     }];
 
-    return @[action1, action0];
+    return @[copyAction, delAction];
 }
 #pragma mark - HTTP request
 - (void)request {

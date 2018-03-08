@@ -16,5 +16,6 @@ target :"SHWallet" do
 pod 'Masonry', '~> 1.1.0'
 pod 'PayPal-iOS-SDK'
 pod 'MJExtension'
+pod 'Toast', '~> 4.0.0'
 end
 

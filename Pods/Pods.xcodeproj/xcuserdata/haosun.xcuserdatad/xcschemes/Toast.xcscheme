@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B693A6149F711A1CFED605803D5C8BA6'
-               BlueprintName = 'Pods-SHWallet'
+               BlueprintIdentifier = '834D8019DE89BA00EB08109A183D2B00'
+               BlueprintName = 'Toast'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-SHWallet.a'>
+               BuildableName = 'libToast.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

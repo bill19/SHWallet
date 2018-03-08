@@ -46,6 +46,7 @@
 
 #pragma mark - UISetup
 - (void)setupSubViews {
+
     UIImageView *cardImageView = [[UIImageView alloc] init];
     cardImageView.layer.cornerRadius = 20;
     cardImageView.layer.masksToBounds = YES;
@@ -120,6 +121,7 @@
         make.bottom.mas_equalTo(self.cardImageView.mas_bottom).offset(-padding);
     }];
 }
+
 
 - (void)setWalletModel:(SHWalletModel *)walletModel {
     _walletModel = walletModel;

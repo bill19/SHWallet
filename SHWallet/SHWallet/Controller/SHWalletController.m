@@ -12,13 +12,14 @@
 #import "Masonry.h"
 #import "MJExtension.h"
 #import "CardIO.h"
+#import "Toast.h"
 #import "CardIOPaymentViewControllerDelegate.h"
 static NSString *KcardKey = @"SHCARDKEY";
 static NSString *KcardNum = @"卡号";
 static NSString *KcardOther = @"备注信息";
 static NSString *KcardBank = @"银行";
 static NSString *KcardCvv = @"Cvv";
-@interface SHWalletController () <UITableViewDelegate,UITableViewDataSource>
+@interface SHWalletController () <UITableViewDelegate,UITableViewDataSource,SHWalletCellDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray <SHWalletModel *>*tableDataSource;
 @property (nonatomic, strong) SHWalletModel *changeModel;
@@ -133,8 +134,6 @@ static NSString *KcardCvv = @"Cvv";
 //扫描完成
 - (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)scanViewController {
     //扫描结果
-//    NSLog(@"%@",[info mj_JSONString]);
-    // Use the card info...
     [scanViewController dismissViewControllerAnimated:YES completion:nil];
     _changeModel.cardNum = info.cardNumber;
     _changeModel.cardOther = [NSString stringWithFormat:@"%ld / %ld",info.expiryMonth,info.expiryYear];
@@ -171,13 +170,31 @@ static NSString *KcardCvv = @"Cvv";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self showAddMessage:self.tableDataSource[indexPath.row]];
 }
-//删除
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 删除模型
-    [self.tableDataSource removeObjectAtIndex:indexPath.row];
-    [self savaSource];
-    // 刷新
-    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+
+- (void)longCopy:(SHWalletModel *)model {
+    UIPasteboard *pboard = [UIPasteboard generalPasteboard];
+    pboard.string = model.cardNum;
+    [self.view makeToast:@"拷贝成功"];
+}
+
+/**
+ *  左滑cell时出现什么按钮
+ */
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewRowAction *action0 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+        // 删除模型
+        [self.tableDataSource removeObjectAtIndex:indexPath.row];
+        [self savaSource];
+        // 刷新
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    }];
+
+    UITableViewRowAction *action1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"拷贝" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+        [self longCopy:self.tableDataSource[indexPath.row]];
+    }];
+
+    return @[action1, action0];
 }
 #pragma mark - HTTP request
 - (void)request {

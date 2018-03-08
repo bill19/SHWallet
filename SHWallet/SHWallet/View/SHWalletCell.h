@@ -9,10 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "Masonry.h"
 #import "SHWalletModel.h"
+@protocol SHWalletCellDelegate <NSObject>
+
+@optional
+
+@end
+
 @interface SHWalletCell : UITableViewCell
 
 /*创建TableviewCell**/
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 
 @property (nonatomic, strong) SHWalletModel *walletModel;
+
+@property (nonatomic, assign) id<SHWalletCellDelegate>delegate;
 @end

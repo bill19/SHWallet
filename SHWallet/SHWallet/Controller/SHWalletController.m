@@ -108,14 +108,9 @@ static NSString *KcardCvv = @"Cvv";
 
     }]];
     [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSMutableArray *mu = [NSMutableArray array];
         [self.tableDataSource insertObject:self.changeModel atIndex:0];
         [self.tableView reloadData];
-        for (SHWalletModel *model in self.tableDataSource) {
-            [mu addObject:[model mj_keyValues]];
-        }
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-        [userDefault setObject:mu forKey:KcardKey];
+        [self savaSource];
     }]];
     [self presentViewController:alertView animated:YES completion:nil];
 }
@@ -174,13 +169,13 @@ static NSString *KcardCvv = @"Cvv";
 
 #pragma mark - delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self showAddMessage:self.tableDataSource[indexPath.row]];
 }
 //删除
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     // 删除模型
-    NSMutableArray *mu = [self.tableDataSource mutableCopy];
-    [mu removeObjectAtIndex:indexPath.row];
+    [self.tableDataSource removeObjectAtIndex:indexPath.row];
+    [self savaSource];
     // 刷新
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
 }
@@ -203,6 +198,17 @@ static NSString *KcardCvv = @"Cvv";
 }
 
 #pragma mark - others
+/**
+ 存信息
+ */
+- (void)savaSource {
+    NSMutableArray *mu = [NSMutableArray array];
+    for (SHWalletModel *model in self.tableDataSource) {
+        [mu addObject:[model mj_keyValues]];
+    }
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:mu forKey:KcardKey];
+}
 
 #pragma mark - setters
 

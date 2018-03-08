@@ -244,6 +244,9 @@ static NSString *KcardCvv = @"Cvv";
         tableView.tableFooterView = [UITableViewHeaderFooterView new];
         [self.view addSubview:tableView];
         _tableView = tableView;
+        [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.bottom.mas_equalTo(self.view).offset(0);
+        }];
     }
     return _tableView;
 }

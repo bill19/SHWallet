@@ -27,6 +27,8 @@
 		6D4C32862050D22B00A57F2A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4C32852050D22B00A57F2A /* CoreMedia.framework */; };
 		6D4C32882050D23D00A57F2A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4C32872050D23D00A57F2A /* AudioToolbox.framework */; };
 		6D4C328A2050D24700A57F2A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4C32892050D24700A57F2A /* AVFoundation.framework */; };
+		6D4C32902051112D00A57F2A /* TouchIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C328E2051112C00A57F2A /* TouchIDManager.m */; };
+		6D4C32922051120900A57F2A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4C32912051120900A57F2A /* LocalAuthentication.framework */; };
 		6DE2A174204FE87F000AC5B1 /* SHWalletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2A173204FE87F000AC5B1 /* SHWalletModel.m */; };
 		8E7978985C137D74CF4D25E7 /* libPods-SHWallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8EE218043A613560A861E46 /* libPods-SHWallet.a */; };
 /* End PBXBuildFile section */
@@ -84,6 +86,9 @@
 		6D4C32852050D22B00A57F2A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		6D4C32872050D23D00A57F2A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6D4C32892050D24700A57F2A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6D4C328E2051112C00A57F2A /* TouchIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchIDManager.m; sourceTree = "<group>"; };
+		6D4C328F2051112C00A57F2A /* TouchIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchIDManager.h; sourceTree = "<group>"; };
+		6D4C32912051120900A57F2A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		6DE2A172204FE87F000AC5B1 /* SHWalletModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHWalletModel.h; sourceTree = "<group>"; };
 		6DE2A173204FE87F000AC5B1 /* SHWalletModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHWalletModel.m; sourceTree = "<group>"; };
 		8C51B5B48FD075F1D0072F5D /* Pods-SHWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHWallet/Pods-SHWallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D4C32922051120900A57F2A /* LocalAuthentication.framework in Frameworks */,
 				6D4C328A2050D24700A57F2A /* AVFoundation.framework in Frameworks */,
 				6D4C32882050D23D00A57F2A /* AudioToolbox.framework in Frameworks */,
 				6D4C32862050D22B00A57F2A /* CoreMedia.framework in Frameworks */,
@@ -155,6 +161,8 @@
 		6D2E05D8204F848300D14159 /* SHWallet */ = {
 			isa = PBXGroup;
 			children = (
+				6D4C328F2051112C00A57F2A /* TouchIDManager.h */,
+				6D4C328E2051112C00A57F2A /* TouchIDManager.m */,
 				6D2E05D9204F848300D14159 /* AppDelegate.h */,
 				6D2E05DA204F848300D14159 /* AppDelegate.m */,
 				6D2E05DC204F848300D14159 /* ViewController.h */,
@@ -252,6 +260,7 @@
 		8C322E41773B51E884CD7142 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D4C32912051120900A57F2A /* LocalAuthentication.framework */,
 				6D4C32892050D24700A57F2A /* AVFoundation.framework */,
 				6D4C32872050D23D00A57F2A /* AudioToolbox.framework */,
 				6D4C32852050D22B00A57F2A /* CoreMedia.framework */,
@@ -456,6 +465,7 @@
 				6D2E0614204F8B1200D14159 /* SHItem.m in Sources */,
 				6D2E0621204F8F7400D14159 /* SHWalletController.m in Sources */,
 				6D2E062E204F927800D14159 /* UIColor+KNColor.m in Sources */,
+				6D4C32902051112D00A57F2A /* TouchIDManager.m in Sources */,
 				6DE2A174204FE87F000AC5B1 /* SHWalletModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SHWalletController.h"
+#import "TouchIDManager.h"
 #import "SHItem.h"
 @interface ViewController ()<SHItemDelegate>
 
@@ -32,6 +33,11 @@
 
 - (void)itemDidSelect:(SHItemModel *)itemModel {
 
-    [self.navigationController pushViewController:[[SHWalletController alloc] init] animated:YES];
+    if ([TouchIDManager sharedManager].canUseTouchId) {
+        [[TouchIDManager sharedManager] touchIDWithlocalizedFallbackTitle:@"验证" localizedReason:@"指纹验证" success:^(BOOL success, NSError *error) {
+            [self.navigationController pushViewController:[[SHWalletController alloc] init] animated:YES];
+        }];
+
+    }
 }
 @end

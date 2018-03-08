@@ -14,5 +14,5 @@
 @property (nonatomic, copy) NSString *cardNum;
 @property (nonatomic, copy) NSString *cardBank;
 @property (nonatomic, copy) NSString *cardOther;
-
+@property (nonatomic, copy) NSString *cardCvv;
 @end

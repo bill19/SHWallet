@@ -1,12 +1,25 @@
 PODS:
+  - CardIO (5.4.1)
   - Masonry (1.1.0)
+  - MJExtension (3.0.13)
+  - PayPal-iOS-SDK (2.18.0):
+    - PayPal-iOS-SDK/CardIO (= 2.18.0)
+    - PayPal-iOS-SDK/Core (= 2.18.0)
+  - PayPal-iOS-SDK/CardIO (2.18.0):
+    - CardIO (~> 5.4.1)
+  - PayPal-iOS-SDK/Core (2.18.0)
 
 DEPENDENCIES:
   - Masonry (~> 1.1.0)
+  - MJExtension
+  - PayPal-iOS-SDK
 
 SPEC CHECKSUMS:
+  CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  PayPal-iOS-SDK: 3fc74982a68d54eeaf39e09f507f279dc2291860
 
-PODFILE CHECKSUM: a5c0e87b8426e77e8a7368ffb8016c6e0d78de66
+PODFILE CHECKSUM: 09a363eb2e6b200e58589a8e527d70c9e0b4b931
 
 COCOAPODS: 1.2.1

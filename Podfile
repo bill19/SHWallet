@@ -14,5 +14,7 @@ platform :ios, "8.0"
 # pod库只存在当前目标
 target :"SHWallet" do
 pod 'Masonry', '~> 1.1.0'
+pod 'PayPal-iOS-SDK'
+pod 'MJExtension'
 end
 

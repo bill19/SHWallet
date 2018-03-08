@@ -21,8 +21,13 @@
 		6D2E061A204F8CEF00D14159 /* SHItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0619204F8CEF00D14159 /* SHItemModel.m */; };
 		6D2E0621204F8F7400D14159 /* SHWalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0620204F8F7400D14159 /* SHWalletController.m */; };
 		6D2E0628204F900700D14159 /* SHWalletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0627204F900700D14159 /* SHWalletCell.m */; };
-		6D2E062B204F901E00D14159 /* SHWalletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E062A204F901E00D14159 /* SHWalletModel.m */; };
 		6D2E062E204F927800D14159 /* UIColor+KNColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E062C204F927800D14159 /* UIColor+KNColor.m */; };
+		6D4C32822050D21500A57F2A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4C32812050D21500A57F2A /* Accelerate.framework */; };
+		6D4C32842050D22000A57F2A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4C32832050D22000A57F2A /* MobileCoreServices.framework */; };
+		6D4C32862050D22B00A57F2A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4C32852050D22B00A57F2A /* CoreMedia.framework */; };
+		6D4C32882050D23D00A57F2A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4C32872050D23D00A57F2A /* AudioToolbox.framework */; };
+		6D4C328A2050D24700A57F2A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4C32892050D24700A57F2A /* AVFoundation.framework */; };
+		6DE2A174204FE87F000AC5B1 /* SHWalletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2A173204FE87F000AC5B1 /* SHWalletModel.m */; };
 		8E7978985C137D74CF4D25E7 /* libPods-SHWallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8EE218043A613560A861E46 /* libPods-SHWallet.a */; };
 /* End PBXBuildFile section */
 
@@ -72,10 +77,15 @@
 		6D2E0620204F8F7400D14159 /* SHWalletController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHWalletController.m; sourceTree = "<group>"; };
 		6D2E0626204F900700D14159 /* SHWalletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHWalletCell.h; sourceTree = "<group>"; };
 		6D2E0627204F900700D14159 /* SHWalletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHWalletCell.m; sourceTree = "<group>"; };
-		6D2E0629204F901E00D14159 /* SHWalletModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHWalletModel.h; sourceTree = "<group>"; };
-		6D2E062A204F901E00D14159 /* SHWalletModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHWalletModel.m; sourceTree = "<group>"; };
 		6D2E062C204F927800D14159 /* UIColor+KNColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+KNColor.m"; sourceTree = "<group>"; };
 		6D2E062D204F927800D14159 /* UIColor+KNColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+KNColor.h"; sourceTree = "<group>"; };
+		6D4C32812050D21500A57F2A /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		6D4C32832050D22000A57F2A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6D4C32852050D22B00A57F2A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		6D4C32872050D23D00A57F2A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6D4C32892050D24700A57F2A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6DE2A172204FE87F000AC5B1 /* SHWalletModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHWalletModel.h; sourceTree = "<group>"; };
+		6DE2A173204FE87F000AC5B1 /* SHWalletModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHWalletModel.m; sourceTree = "<group>"; };
 		8C51B5B48FD075F1D0072F5D /* Pods-SHWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHWallet/Pods-SHWallet.release.xcconfig"; sourceTree = "<group>"; };
 		F8EE218043A613560A861E46 /* libPods-SHWallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SHWallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -85,6 +95,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D4C328A2050D24700A57F2A /* AVFoundation.framework in Frameworks */,
+				6D4C32882050D23D00A57F2A /* AudioToolbox.framework in Frameworks */,
+				6D4C32862050D22B00A57F2A /* CoreMedia.framework in Frameworks */,
+				6D4C32842050D22000A57F2A /* MobileCoreServices.framework in Frameworks */,
+				6D4C32822050D21500A57F2A /* Accelerate.framework in Frameworks */,
 				8E7978985C137D74CF4D25E7 /* libPods-SHWallet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,8 +232,8 @@
 		6D2E061E204F8F1600D14159 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6D2E0629204F901E00D14159 /* SHWalletModel.h */,
-				6D2E062A204F901E00D14159 /* SHWalletModel.m */,
+				6DE2A172204FE87F000AC5B1 /* SHWalletModel.h */,
+				6DE2A173204FE87F000AC5B1 /* SHWalletModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,6 +252,11 @@
 		8C322E41773B51E884CD7142 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D4C32892050D24700A57F2A /* AVFoundation.framework */,
+				6D4C32872050D23D00A57F2A /* AudioToolbox.framework */,
+				6D4C32852050D22B00A57F2A /* CoreMedia.framework */,
+				6D4C32832050D22000A57F2A /* MobileCoreServices.framework */,
+				6D4C32812050D21500A57F2A /* Accelerate.framework */,
 				F8EE218043A613560A861E46 /* libPods-SHWallet.a */,
 			);
 			name = Frameworks;
@@ -433,10 +453,10 @@
 				6D2E05DE204F848300D14159 /* ViewController.m in Sources */,
 				6D2E05EC204F848300D14159 /* main.m in Sources */,
 				6D2E05DB204F848300D14159 /* AppDelegate.m in Sources */,
-				6D2E062B204F901E00D14159 /* SHWalletModel.m in Sources */,
 				6D2E0614204F8B1200D14159 /* SHItem.m in Sources */,
 				6D2E0621204F8F7400D14159 /* SHWalletController.m in Sources */,
 				6D2E062E204F927800D14159 /* UIColor+KNColor.m in Sources */,
+				6DE2A174204FE87F000AC5B1 /* SHWalletModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

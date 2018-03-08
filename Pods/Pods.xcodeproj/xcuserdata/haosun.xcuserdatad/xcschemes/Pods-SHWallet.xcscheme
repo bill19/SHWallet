@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BB21F9527A68D393165C64258924DF0A'
+               BlueprintIdentifier = 'D57E66B765932BD53F0A8A94A71DCB72'
                BlueprintName = 'Pods-SHWallet'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-SHWallet.a'>

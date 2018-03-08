@@ -32,14 +32,13 @@
     [item setTitle:@"信用卡" forState:UIControlStateNormal];
     [item.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
     [item setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [item mt_verticalImageAndTitle:10.0];
+    [item mt_verticalImageAndTitle:10.0f];
+    [item refreshImageViewWithTop:0 andBottom:0 andLeft:0 andRight:10];
     _item = item;
     [self addSubview:_item];
-    
 }
 
 - (void)itemAction:(UIButton *)sender {
-    
     if (self.delegate && [self.delegate respondsToSelector:@selector(itemDidSelect:)]) {
         [self.delegate itemDidSelect:_itemModel];
     }

@@ -13,6 +13,7 @@
 #import "MJExtension.h"
 #import "CardIO.h"
 #import "Toast.h"
+#import "LRKeychain.h"
 #import "CardIOPaymentViewControllerDelegate.h"
 static NSString *KcardKey = @"SHCARDKEY";
 static NSString *KcardNum = @"卡号";
@@ -198,8 +199,7 @@ static NSString *KcardCvv = @"Cvv";
 }
 #pragma mark - HTTP request
 - (void)request {
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSArray *arr = [userDefault objectForKey:KcardKey];
+    NSArray *arr = [LRKeychain getKeychainDataForKey:KcardKey];
     for (NSDictionary *dict in arr) {
         [self.tableDataSource addObject:[SHWalletModel mj_objectWithKeyValues:dict]];
     }
@@ -223,8 +223,7 @@ static NSString *KcardCvv = @"Cvv";
     for (SHWalletModel *model in self.tableDataSource) {
         [mu addObject:[model mj_keyValues]];
     }
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:mu forKey:KcardKey];
+    [LRKeychain addKeychainData:mu forKey:KcardKey];
 }
 
 #pragma mark - setters

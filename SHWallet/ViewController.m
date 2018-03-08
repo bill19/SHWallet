@@ -37,7 +37,8 @@
         [[TouchIDManager sharedManager] touchIDWithlocalizedFallbackTitle:@"验证" localizedReason:@"指纹验证" success:^(BOOL success, NSError *error) {
             [self.navigationController pushViewController:[[SHWalletController alloc] init] animated:YES];
         }];
-
+    }else{
+        [self.navigationController pushViewController:[[SHWalletController alloc] init] animated:YES];
     }
 }
 @end

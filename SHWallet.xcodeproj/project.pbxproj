@@ -30,6 +30,12 @@
 		6D4C32902051112D00A57F2A /* TouchIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C328E2051112C00A57F2A /* TouchIDManager.m */; };
 		6D4C32922051120900A57F2A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4C32912051120900A57F2A /* LocalAuthentication.framework */; };
 		6D4C3295205115E400A57F2A /* LRKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C3293205115E400A57F2A /* LRKeychain.m */; };
+		6D8D788220528CA800BFDF07 /* BCMyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D787820528CA700BFDF07 /* BCMyCollectionViewCell.m */; };
+		6D8D788320528CA800BFDF07 /* SHFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D787A20528CA800BFDF07 /* SHFormModel.m */; };
+		6D8D788420528CA800BFDF07 /* BCMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D787C20528CA800BFDF07 /* BCMyTableViewCell.m */; };
+		6D8D788520528CA800BFDF07 /* SHFormConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D787D20528CA800BFDF07 /* SHFormConfig.m */; };
+		6D8D788620528CA800BFDF07 /* MyTableListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D788020528CA800BFDF07 /* MyTableListView.m */; };
+		6DE0E5BB205140CF00B72C7A /* SHEXFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE0E5BA205140CF00B72C7A /* SHEXFormController.m */; };
 		6DE2A174204FE87F000AC5B1 /* SHWalletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2A173204FE87F000AC5B1 /* SHWalletModel.m */; };
 		8E7978985C137D74CF4D25E7 /* libPods-SHWallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8EE218043A613560A861E46 /* libPods-SHWallet.a */; };
 /* End PBXBuildFile section */
@@ -92,6 +98,18 @@
 		6D4C32912051120900A57F2A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		6D4C3293205115E400A57F2A /* LRKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRKeychain.m; sourceTree = "<group>"; };
 		6D4C3294205115E400A57F2A /* LRKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRKeychain.h; sourceTree = "<group>"; };
+		6D8D787820528CA700BFDF07 /* BCMyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMyCollectionViewCell.m; sourceTree = "<group>"; };
+		6D8D787920528CA700BFDF07 /* SHFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHFormModel.h; sourceTree = "<group>"; };
+		6D8D787A20528CA800BFDF07 /* SHFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHFormModel.m; sourceTree = "<group>"; };
+		6D8D787B20528CA800BFDF07 /* SHFormConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHFormConfig.h; sourceTree = "<group>"; };
+		6D8D787C20528CA800BFDF07 /* BCMyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMyTableViewCell.m; sourceTree = "<group>"; };
+		6D8D787D20528CA800BFDF07 /* SHFormConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHFormConfig.m; sourceTree = "<group>"; };
+		6D8D787E20528CA800BFDF07 /* BCMyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMyCollectionViewCell.h; sourceTree = "<group>"; };
+		6D8D787F20528CA800BFDF07 /* MyTableListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableListView.h; sourceTree = "<group>"; };
+		6D8D788020528CA800BFDF07 /* MyTableListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableListView.m; sourceTree = "<group>"; };
+		6D8D788120528CA800BFDF07 /* BCMyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMyTableViewCell.h; sourceTree = "<group>"; };
+		6DE0E5B9205140CF00B72C7A /* SHEXFormController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHEXFormController.h; sourceTree = "<group>"; };
+		6DE0E5BA205140CF00B72C7A /* SHEXFormController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHEXFormController.m; sourceTree = "<group>"; };
 		6DE2A172204FE87F000AC5B1 /* SHWalletModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHWalletModel.h; sourceTree = "<group>"; };
 		6DE2A173204FE87F000AC5B1 /* SHWalletModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHWalletModel.m; sourceTree = "<group>"; };
 		8C51B5B48FD075F1D0072F5D /* Pods-SHWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHWallet/Pods-SHWallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +182,7 @@
 		6D2E05D8204F848300D14159 /* SHWallet */ = {
 			isa = PBXGroup;
 			children = (
+				6DE0E5B520513FAC00B72C7A /* SHEXForm */,
 				6D4C3294205115E400A57F2A /* LRKeychain.h */,
 				6D4C3293205115E400A57F2A /* LRKeychain.m */,
 				6D4C328F2051112C00A57F2A /* TouchIDManager.h */,
@@ -260,6 +279,49 @@
 				6D2E0613204F8B1200D14159 /* SHItem.m */,
 			);
 			path = SHItem;
+			sourceTree = "<group>";
+		};
+		6DE0E5B520513FAC00B72C7A /* SHEXForm */ = {
+			isa = PBXGroup;
+			children = (
+				6D8D787B20528CA800BFDF07 /* SHFormConfig.h */,
+				6D8D787D20528CA800BFDF07 /* SHFormConfig.m */,
+				6DE0E5B6205140A700B72C7A /* Controller */,
+				6DE0E5B7205140A700B72C7A /* Model */,
+				6DE0E5B8205140A700B72C7A /* View */,
+			);
+			path = SHEXForm;
+			sourceTree = "<group>";
+		};
+		6DE0E5B6205140A700B72C7A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6DE0E5B9205140CF00B72C7A /* SHEXFormController.h */,
+				6DE0E5BA205140CF00B72C7A /* SHEXFormController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6DE0E5B7205140A700B72C7A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6D8D787920528CA700BFDF07 /* SHFormModel.h */,
+				6D8D787A20528CA800BFDF07 /* SHFormModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6DE0E5B8205140A700B72C7A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6D8D787F20528CA800BFDF07 /* MyTableListView.h */,
+				6D8D788020528CA800BFDF07 /* MyTableListView.m */,
+				6D8D787E20528CA800BFDF07 /* BCMyCollectionViewCell.h */,
+				6D8D787820528CA700BFDF07 /* BCMyCollectionViewCell.m */,
+				6D8D788120528CA800BFDF07 /* BCMyTableViewCell.h */,
+				6D8D787C20528CA800BFDF07 /* BCMyTableViewCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8C322E41773B51E884CD7142 /* Frameworks */ = {
@@ -461,15 +523,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D2E061A204F8CEF00D14159 /* SHItemModel.m in Sources */,
+				6DE0E5BB205140CF00B72C7A /* SHEXFormController.m in Sources */,
 				6D2E0617204F8B9E00D14159 /* UIButton+RefreshLocation.m in Sources */,
+				6D8D788420528CA800BFDF07 /* BCMyTableViewCell.m in Sources */,
 				6D2E05E4204F848300D14159 /* SHWallet.xcdatamodeld in Sources */,
+				6D8D788220528CA800BFDF07 /* BCMyCollectionViewCell.m in Sources */,
 				6D2E0628204F900700D14159 /* SHWalletCell.m in Sources */,
 				6D2E05DE204F848300D14159 /* ViewController.m in Sources */,
 				6D2E05EC204F848300D14159 /* main.m in Sources */,
+				6D8D788320528CA800BFDF07 /* SHFormModel.m in Sources */,
+				6D8D788520528CA800BFDF07 /* SHFormConfig.m in Sources */,
 				6D2E05DB204F848300D14159 /* AppDelegate.m in Sources */,
 				6D4C3295205115E400A57F2A /* LRKeychain.m in Sources */,
 				6D2E0614204F8B1200D14159 /* SHItem.m in Sources */,
 				6D2E0621204F8F7400D14159 /* SHWalletController.m in Sources */,
+				6D8D788620528CA800BFDF07 /* MyTableListView.m in Sources */,
 				6D2E062E204F927800D14159 /* UIColor+KNColor.m in Sources */,
 				6D4C32902051112D00A57F2A /* TouchIDManager.m in Sources */,
 				6DE2A174204FE87F000AC5B1 /* SHWalletModel.m in Sources */,

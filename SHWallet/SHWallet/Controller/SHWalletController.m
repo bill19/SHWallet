@@ -20,7 +20,7 @@ static NSString *KcardNum = @"卡号";
 static NSString *KcardOther = @"备注信息";
 static NSString *KcardBank = @"银行";
 static NSString *KcardCvv = @"Cvv";
-@interface SHWalletController () <UITableViewDelegate,UITableViewDataSource,SHWalletCellDelegate>
+@interface SHWalletController () <UITableViewDelegate,UITableViewDataSource,SHWalletCellDelegate,CardIOPaymentViewControllerDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray <SHWalletModel *>*tableDataSource;
 @property (nonatomic, strong) SHWalletModel *changeModel;

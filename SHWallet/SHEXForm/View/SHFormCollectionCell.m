@@ -1,16 +1,16 @@
 //
-//  BCMyCollectionViewCell.m
+//  SHFormCollectionCell.m
 //  xxxxxxxx
 //
 //  Created by WF on 2017/1/5.
 //  Copyright © 2017年 WF. All rights reserved.
 //
 
-#import "BCMyCollectionViewCell.h"
-@interface BCMyCollectionViewCell ()
+#import "SHFormCollectionCell.h"
+@interface SHFormCollectionCell ()
 @property (nonatomic, strong) UILabel *normalLab;
 @end
-@implementation BCMyCollectionViewCell
+@implementation SHFormCollectionCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
 

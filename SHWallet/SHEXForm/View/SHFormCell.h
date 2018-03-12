@@ -1,5 +1,5 @@
 //
-//  BCMyTableViewCell.h
+//  SHFormCell.h
 //  xxxxxxxx
 //
 //  Created by WF on 2017/1/5.
@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SHFormModel.h"
 
-@interface BCMyTableViewCell : UITableViewCell
+@interface SHFormCell : UITableViewCell
 
-+ (BCMyTableViewCell *)cellWithTableView:(UITableView *)tableView;
++ (SHFormCell *)cellWithTableView:(UITableView *)tableView;
 
 @property (nonatomic, strong) SHFormModel *listModel;
 

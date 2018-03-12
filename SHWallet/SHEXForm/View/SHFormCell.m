@@ -1,24 +1,24 @@
 //
-//  BCMyTableViewCell.m
+//  SHFormCell.m
 //  xxxxxxxx
 //
 //  Created by WF on 2017/1/5.
 //  Copyright © 2017年 WF. All rights reserved.
 //
 
-#import "BCMyTableViewCell.h"
+#import "SHFormCell.h"
 
-@interface BCMyTableViewCell ()
+@interface SHFormCell ()
 @property (nonatomic, strong) UILabel *listLab;
 @end
 
-@implementation BCMyTableViewCell
+@implementation SHFormCell
 
-+ (BCMyTableViewCell *)cellWithTableView:(UITableView *)tableView {
-    NSString *ID = NSStringFromClass([BCMyTableViewCell class]);
-    BCMyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
++ (SHFormCell *)cellWithTableView:(UITableView *)tableView {
+    NSString *ID = NSStringFromClass([SHFormCell class]);
+    SHFormCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (!cell){
-        cell = [[BCMyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[SHFormCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;

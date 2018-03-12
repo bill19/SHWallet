@@ -11,7 +11,6 @@
 @implementation SHFormModel
 
 + (SHFormModel *)creatFormModel  {
-    
     SHFormModel * model = [[SHFormModel alloc] init];
     model.attributeName = @"2+x";
     return model;

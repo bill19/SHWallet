@@ -1,5 +1,5 @@
 //
-//  MyTableListView.m
+//  SHFormView.m
 //  xxxxxxxx
 //
 //  Created by WF on 2017/1/14.
@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyTableListView.h"
-#import "BCMyCollectionViewCell.h"
-#import "BCMyTableViewCell.h"
-@interface MyTableListView()
+#import "SHFormView.h"
+#import "SHFormCollectionCell.h"
+#import "SHFormCell.h"
+@interface SHFormView()
 <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITableView *tableView;
+/**数据表格的标题数据*/
+@property (nonatomic, strong) NSArray <SHFormModel *>*formTitleSource;
+/**数据表格的列表标题数据*/
+@property (nonatomic, strong) NSArray <SHFormModel *>*formLitsSource;
+/**数据表格的内容数据*/
+@property(strong,nonatomic) NSArray<SHFormModel *>*formSource;
 @end
-@implementation MyTableListView
+@implementation SHFormView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -46,7 +52,7 @@
     //整体布局 右 除了第一列以外的底层布局
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(kFirstCellWidth, 0,self.frame.size.width - kFirstCellWidth, self.frame.size.height)];
     if (kNormalCellWidth * (self.formSource.count - 1) > CGRectGetWidth(_scrollView.frame)) {
-        _scrollView.contentSize = CGSizeMake(kNormalCellWidth*(self.formSource.count - 1), _scrollView.frame.size.height);
+        _scrollView.contentSize = CGSizeMake(kNormalCellWidth * (self.formSource.count - 1), _scrollView.frame.size.height);
     }
     _scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:_scrollView];
@@ -56,7 +62,7 @@
     [self addSubview:originLabel];
 
     [self addSubview:self.tableView];
-    [_tableView registerClass:[BCMyTableViewCell class] forCellReuseIdentifier:NSStringFromClass([BCMyTableViewCell class])];
+    [_tableView registerClass:[SHFormCell class] forCellReuseIdentifier:NSStringFromClass([SHFormCell class])];
     //上层布局 右
     for (NSInteger index = 0; index < _formLitsSource.count - 1; index ++) {
         UILabel *normalLab = [SHFormConfig creatFormNormalLabel];
@@ -66,7 +72,7 @@
     }
     [_scrollView addSubview:self.collectionView];
     // 注册cell、sectionHeader、sectionFooter
-    [_collectionView registerClass:[BCMyCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([BCMyCollectionViewCell class])];
+    [_collectionView registerClass:[SHFormCollectionCell class] forCellWithReuseIdentifier:NSStringFromClass([SHFormCollectionCell class])];
     [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kHeaderIdentifier];
     [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kFooterIdentifier];
 }
@@ -100,7 +106,7 @@
     return _formSource.count - 1;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    BCMyCollectionViewCell *cell = (BCMyCollectionViewCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([BCMyCollectionViewCell class]) forIndexPath:indexPath];
+    SHFormCollectionCell *cell = (SHFormCollectionCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SHFormCollectionCell class]) forIndexPath:indexPath];
     cell.formModel = [self.formSource objectAtIndex:indexPath.row];
     return cell;
 }
@@ -188,7 +194,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    BCMyTableViewCell *cell = [BCMyTableViewCell cellWithTableView:tableView];
+    SHFormCell *cell = [SHFormCell cellWithTableView:tableView];
     cell.listModel = [_formLitsSource objectAtIndex:indexPath.row];
     return cell;
 }

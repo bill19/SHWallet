@@ -110,7 +110,7 @@ static NSString *KcardCvv = @"Cvv";
 
     }]];
     [alertView addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self.tableDataSource insertObject:self.changeModel atIndex:0];
+        [self.tableDataSource insertObject:self.changeModel  atIndex:0];
         [self.tableView reloadData];
         [self savaSource];
     }]];
@@ -169,7 +169,8 @@ static NSString *KcardCvv = @"Cvv";
 
 #pragma mark - delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self showAddMessage:self.tableDataSource[indexPath.row]];
+    self.changeModel = self.tableDataSource[indexPath.row];
+    [self showAddMessage:self.changeModel];
 }
 
 - (void)longCopy:(SHWalletModel *)model {

@@ -10,50 +10,39 @@
 #import "SHFormView.h"
 #import "SHFormCollectionCell.h"
 #import "SHFormCell.h"
+#import "UIColor+KNColor.h"
 @interface SHFormView()
 <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSArray <SHFormModel *>*X_AxisSource;
-@property (nonatomic, strong) NSArray <SHFormModel *>*Y_AxisSource;
-@property (nonatomic, strong) NSString *originPoint;
+@property (nonatomic, strong) UILabel * originLabel;
 @end
 @implementation SHFormView
-
-- (instancetype)initWithFrame:(CGRect)frame X_Axis:(NSArray <SHFormModel *>*)X_Axis Y_Axis:(NSArray <SHFormModel *>*)Y_Axis Origin:(NSString *)origin {
+- (instancetype)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (self) {
-        self.X_AxisSource = X_Axis;
-        self.Y_AxisSource = Y_Axis;
-        self.originPoint = origin;
-        [self creatTableListViewUI];
+        [self setupSubViews];
     }
     return self;
 }
-
-- (void)creatTableListViewUI {
+- (void)setupSubViews {
     //整体布局 右 除了第一列以外的底层布局
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(kFirstCellWidth, 0,self.frame.size.width - kFirstCellWidth, self.frame.size.height)];
-
     _scrollView.contentSize = CGSizeMake(kNormalCellWidth * ([[SHFormConfig creatX_Axis] count]), _scrollView.frame.size.height);
     _scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:_scrollView];
+
     //坐标为0,0的坐标点 原点
-    UILabel * originLabel = [SHFormConfig creatFormTitleLabel];
-    originLabel.text = _originPoint;
+    UILabel * originLabel = [[UILabel alloc] init];
     originLabel.frame = CGRectMake(0, 0, kFirstCellWidth, kNormalCellHeight);
-    [self addSubview:originLabel];
+    _originLabel = originLabel;
+    [self addSubview:_originLabel];
 
     [self.tableView registerClass:[SHFormCell class] forCellReuseIdentifier:NSStringFromClass([SHFormCell class])];
     [self addSubview:self.tableView];
 
-    for (NSInteger index = 0; index < [[SHFormConfig creatX_Axis] count]; index ++) {
-        UILabel *normalLab = [SHFormConfig creatFormNormalLabel];
-        normalLab.frame = CGRectMake(index * kNormalCellWidth, 0, kNormalCellWidth, kNormalCellHeight);
-        normalLab.text = [[[SHFormConfig creatX_Axis] objectAtIndex:index] attributeName];
-        [_scrollView addSubview:normalLab];
-    }
     [_scrollView addSubview:self.collectionView];
     // 注册cell、sectionHeader、sectionFooter
     [_collectionView registerClass:[SHFormCollectionCell class] forCellWithReuseIdentifier:NSStringFromClass([SHFormCollectionCell class])];
@@ -63,7 +52,7 @@
 
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, kNormalCellHeight, kNormalCellWidth*(_Y_AxisSource.count - 1), self.frame.size.height - kNormalCellHeight) collectionViewLayout:[SHFormConfig creatFormNormalLayout]];
+        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, kNormalCellHeight, kNormalCellWidth*([SHFormConfig creatY_Axis].count - 1), self.frame.size.height - kNormalCellHeight) collectionViewLayout:[SHFormConfig creatFormNormalLayout]];
         collectionView.backgroundColor = [UIColor whiteColor];
         collectionView.dataSource = self;
         collectionView.delegate = self;
@@ -92,7 +81,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SHFormCollectionCell *cell = (SHFormCollectionCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SHFormCollectionCell class]) forIndexPath:indexPath];
     NSArray *formSource = [self.formDataSource objectAtIndex:indexPath.section];
-    cell.formModel = [formSource objectAtIndex:indexPath.item];
+    if (formSource.count > 0) {
+        cell.formModel = [formSource objectAtIndex:indexPath.item];
+    }
     return cell;
 }
 
@@ -194,22 +185,37 @@
     return kNormalCellHeight;
 }
 
-- (NSArray<SHFormModel *> *)X_AxisSource {
-    if (!_X_AxisSource) {
-        _X_AxisSource = [NSArray array];
+- (void)setX_AxisSource:(NSArray<SHFormModel *> *)X_AxisSource {
+    _X_AxisSource = X_AxisSource;
+    for (NSInteger index = 0; index < [_X_AxisSource count]; index ++) {
+        SHFormModel *model = [_X_AxisSource objectAtIndex:index];
+        UILabel *normalLab = [[UILabel alloc] init];
+        normalLab.frame = CGRectMake(index * kNormalCellWidth, 0, kNormalCellWidth, kNormalCellHeight);
+        normalLab.text = model.attributeName;
+        normalLab.layer.borderColor = model.formBordeColor.CGColor;
+        normalLab.layer.borderWidth = model.formBordeWidth;
+        normalLab.textAlignment = NSTextAlignmentCenter;
+        normalLab.backgroundColor = model.formBgColor;
+        normalLab.font = [UIFont systemFontOfSize:model.formFontSize];
+        [_scrollView addSubview:normalLab];
     }
-    return _X_AxisSource;
 }
 
-- (NSArray<SHFormModel *> *)Y_AxisSource {
-    if (!_Y_AxisSource) {
-        _Y_AxisSource = [NSArray array];
-    }
-    return _Y_AxisSource;
+- (void)setY_AxisSource:(NSArray<SHFormModel *> *)Y_AxisSource {
+    _Y_AxisSource = Y_AxisSource;
 }
 
 - (void)setFormDataSource:(NSArray<NSArray<SHFormModel *> *> *)formDataSource {
     _formDataSource = formDataSource;
 }
 
+- (void)setOriginPointModel:(SHFormModel *)originPointModel {
+    _originPointModel = originPointModel;
+    _originLabel.text = _originPointModel.attributeName;
+    _originLabel.layer.borderColor = _originPointModel.formBordeColor.CGColor;
+    _originLabel.backgroundColor = _originPointModel.formBgColor;
+    _originLabel.layer.borderWidth = _originPointModel.formBordeWidth;
+    _originLabel.textAlignment = NSTextAlignmentCenter;
+    _originLabel.font = [UIFont systemFontOfSize:_originPointModel.formFontSize];
+}
 @end

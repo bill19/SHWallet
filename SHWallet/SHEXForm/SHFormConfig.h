@@ -23,40 +23,6 @@ static NSString *const kFooterIdentifier = @"kFormCollectionFooter";
  @return 默认布局
  */
 + (UICollectionViewFlowLayout *)creatFormNormalLayout;
-/**
- 创建标题头样式 原点
-
- @return 返回 创建标题头样式
- */
-+ (UILabel *)creatFormTitleLabel;
-
-/**
- 创建内容样式 Title信息
-
- @return 返回 创建内容样式
- */
-+ (UILabel *)creatFormNormalLabel ;
-
-/**
- 创建标题样式 Title信息  最上面那一行样式
-
- @return 返回 最上面那一行样式
- */
-+ (UILabel *)creatFormUpTitleLabel ;
-
-/**
- 创建标题样式 Title信息  最左边面那一行样式
-
- @return 返回 最左边面那一行样式
- */
-+ (UILabel *)creatFormLeftTitleLabel ;
-
-/**
- 原点信息
-
- @return 原点信息
- */
-+ (NSString *)creatOriginPoint ;
 
 /**
  创建X轴 数组信息

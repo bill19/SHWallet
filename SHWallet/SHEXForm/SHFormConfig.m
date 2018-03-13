@@ -29,74 +29,6 @@
     return formLayout;
 }
 
-/**
- 创建标题头样式 原点
-
- @return 返回 创建标题头样式
- */
-+ (UILabel *)creatFormTitleLabel {
-    UILabel * originLabel = [[UILabel alloc] init];
-    originLabel.layer.borderColor = [UIColor colorWithHexString:@"#DDDDDD"].CGColor;
-    originLabel.backgroundColor = [UIColor redColor];
-    originLabel.layer.borderWidth = .3f;
-    originLabel.textAlignment = NSTextAlignmentCenter;
-    originLabel.font = [UIFont systemFontOfSize:14.f];
-    return originLabel;
-}
-
-/**
- 创建内容样式 Title信息
-
- @return 返回 创建内容样式
- */
-+ (UILabel *)creatFormNormalLabel {
-    UILabel * normalLabel = [[UILabel alloc] init];
-    normalLabel.layer.borderColor = [UIColor colorWithHexString:@"#DDDDDD"].CGColor;
-    normalLabel.backgroundColor = [UIColor yellowColor];
-    normalLabel.layer.borderWidth = .3f;
-    normalLabel.textAlignment = NSTextAlignmentCenter;
-    normalLabel.font = [UIFont systemFontOfSize:14.f];
-    return normalLabel;
-}
-
-/**
- 创建标题样式 Title信息  最上面那一行样式
-
- @return 返回 最上面那一行样式
- */
-+ (UILabel *)creatFormUpTitleLabel {
-    UILabel * normalLabel = [[UILabel alloc] init];
-    normalLabel.layer.borderColor = [UIColor colorWithHexString:@"#DDDDDD"].CGColor;
-    normalLabel.backgroundColor = [UIColor yellowColor];
-    normalLabel.layer.borderWidth = .3f;
-    normalLabel.textAlignment = NSTextAlignmentCenter;
-    normalLabel.font = [UIFont systemFontOfSize:14.f];
-    return normalLabel;
-}
-
-/**
- 创建标题样式 Title信息  最左边面那一行样式
-
- @return 返回 最左边面那一行样式
- */
-+ (UILabel *)creatFormLeftTitleLabel {
-    UILabel * normalLabel = [[UILabel alloc] init];
-    normalLabel.layer.borderColor = [UIColor colorWithHexString:@"#DDDDDD"].CGColor;
-    normalLabel.backgroundColor = [UIColor yellowColor];
-    normalLabel.layer.borderWidth = .3f;
-    normalLabel.textAlignment = NSTextAlignmentCenter;
-    normalLabel.font = [UIFont systemFontOfSize:14.f];
-    return normalLabel;
-}
-
-/**
- 原点信息
-
- @return 原点信息
- */
-+ (NSString *)creatOriginPoint {
-    return @"经营指数";
-}
 
 /**
  创建X轴 数组信息
@@ -121,9 +53,7 @@
     for (NSInteger index = 0; index < [SHFormConfig creatY_Axis].count; index ++) {
         NSMutableArray *mu2 = [NSMutableArray array];
         for (NSInteger y = 0; y < [SHFormConfig creatX_Axis].count; y ++) {
-            SHFormModel *model = [[SHFormModel alloc] init];
-            model.attributeName = [NSString stringWithFormat:@"(%ld,%ld)",index,y];
-            [mu2 addObject:model];
+            [mu2 addObject:[SHFormModel creatFormModelTitle:[NSString stringWithFormat:@"(%ld,%ld)",index,y]]];
         }
         [mu addObject:mu2];
     }

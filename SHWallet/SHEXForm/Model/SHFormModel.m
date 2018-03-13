@@ -7,26 +7,23 @@
 //
 
 #import "SHFormModel.h"
-
+#import "UIColor+KNColor.h"
 @implementation SHFormModel
 
-+ (SHFormModel *)creatFormModel {
-    SHFormModel * model = [[SHFormModel alloc] init];
-    model.attributeName = @"2+x";
-    return model;
-}
 + (SHFormModel *)creatFormModelTitle:(NSString *)title {
     SHFormModel * model = [[SHFormModel alloc] init];
     model.attributeName = title;
+    model.formBordeColor = [UIColor yellowColor];
+    model.formBgColor = [UIColor redColor];
+    model.formBordeWidth = .3f;
+    model.formFontSize = 14.f;
     return model;
 }
 
 + (NSArray <SHFormModel *>*)creatFormModelWithSource:(NSArray <NSString *>*)source  {
     NSMutableArray *mu = [NSMutableArray array];
     for (NSInteger index = 0; index < source.count; index++) {
-        SHFormModel * model = [[SHFormModel alloc] init];
-        model.attributeName = [source objectAtIndex:index];
-        [mu addObject:model];
+        [mu addObject:[SHFormModel creatFormModelTitle:[source objectAtIndex:index]]];
     }
     return mu;
 }

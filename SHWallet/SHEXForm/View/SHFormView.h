@@ -23,8 +23,23 @@
 
 @interface SHFormView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame X_Axis:(NSArray <SHFormModel *>*)X_Axis Y_Axis:(NSArray <SHFormModel *>*)Y_Axis Origin:(NSString *)origin;
-/***SHFormViewDelegate代理事件*/
 @property (nonatomic, weak) id <SHFormViewDelegate> delegate;
+
+/**
+ 原点展示信息
+ */
+@property (nonatomic, strong) SHFormModel *originPointModel;
+/**
+ X轴上的信息数据
+ */
+@property (nonatomic, strong) NSArray <SHFormModel *>*X_AxisSource;
+/**
+ Y轴上的信息数据
+ */
+@property (nonatomic, strong) NSArray <SHFormModel *>*Y_AxisSource;
+
+/**
+ 更新数据信息
+ */
 @property (nonatomic, strong) NSArray <NSArray <SHFormModel *>*>*formDataSource;
 @end

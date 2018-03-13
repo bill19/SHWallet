@@ -36,10 +36,10 @@
 
 - (void)setupSubViews {
     UILabel *listLab = [[UILabel alloc] init];
-    listLab.layer.borderColor = [UIColor blackColor].CGColor;
-    listLab.layer.borderWidth = 1.f;
-    listLab.textAlignment = NSTextAlignmentCenter;
-    listLab.font = [UIFont systemFontOfSize:14.f];
+    listLab.layer.borderColor = [UIColor grayColor].CGColor;
+    listLab.layer.borderWidth = .3;
+    listLab.backgroundColor = [UIColor whiteColor];
+    listLab.font = [UIFont systemFontOfSize:14.0f];
     _listLab = listLab;
     [self.contentView addSubview:_listLab];
 }
@@ -52,6 +52,11 @@
 
 - (void)setListModel:(SHFormModel *)listModel {
     _listModel = listModel;
+    _listLab.layer.borderColor = _listModel.formBordeColor.CGColor;
+    _listLab.layer.borderWidth = _listModel.formBordeWidth;
+    _listLab.backgroundColor = _listModel.formBgColor;
+    _listLab.textAlignment = NSTextAlignmentCenter;
+    _listLab.font = [UIFont systemFontOfSize:_listModel.formFontSize];
     _listLab.text = _listModel.attributeName;
 }
 

@@ -39,7 +39,7 @@
 @property (nonatomic, strong) NSArray <SHFormModel *>*Y_AxisSource;
 
 /**
- 更新数据信息
+ 更新数据信息 一行为一条数据源
  */
 @property (nonatomic, strong) NSArray <NSArray <SHFormModel *>*>*formDataSource;
 @end

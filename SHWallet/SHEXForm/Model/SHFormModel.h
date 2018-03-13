@@ -13,4 +13,6 @@
 @property (nonatomic, copy) NSString *attributeName;
 
 + (SHFormModel *)creatFormModel ;
++ (SHFormModel *)creatFormModelTitle:(NSString *)title ;
++ (NSArray <SHFormModel *>*)creatFormModelWithSource:(NSArray <NSString *>*)source ;
 @end

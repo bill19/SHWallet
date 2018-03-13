@@ -41,7 +41,6 @@
     originLabel.layer.borderWidth = .3f;
     originLabel.textAlignment = NSTextAlignmentCenter;
     originLabel.font = [UIFont systemFontOfSize:14.f];
-    originLabel.text = @"经营指数";
     return originLabel;
 }
 
@@ -91,12 +90,43 @@
 }
 
 /**
- 创建表格上表信息
+ 原点信息
 
- @return 上表信息数值
+ @return 原点信息
  */
-+ (NSArray *)creatFormNormalTitles {
-    return @[@"经营指数",@"本期数",@"上期数",@"环比"];
++ (NSString *)creatOriginPoint {
+    return @"经营指数";
 }
 
+/**
+ 创建X轴 数组信息
+
+ @return X轴
+ */
++ (NSArray <SHFormModel *>*)creatX_Axis {
+    return [SHFormModel creatFormModelWithSource:@[@"本期数",@"上期数",@"环比",@"上期数",@"环比",@"上期数",@"环比"]];
+}
+
+/**
+ 创建Y轴 数组信息
+
+ @return Y轴
+ */
++ (NSArray <SHFormModel *>*)creatY_Axis {
+    return [SHFormModel creatFormModelWithSource:@[@"签单总量",@"本期数",@"上期数",@"环比",@"经营指标",@"总佣金(万元)",@"跨区签单量",@"跨区佣金(万元)",@"平均收佣(万元)",@"平均收佣点数",@"当场收佣率",@"成交总价",@"成交总面积",@"平均成交面积",@"平均成交单价"]];
+}
+
++ (NSArray *)creatFormDataSource {
+    NSMutableArray *mu = [NSMutableArray array];
+    for (NSInteger index = 0; index < [SHFormConfig creatY_Axis].count; index ++) {
+        NSMutableArray *mu2 = [NSMutableArray array];
+        for (NSInteger y = 0; y < [SHFormConfig creatX_Axis].count; y ++) {
+            SHFormModel *model = [[SHFormModel alloc] init];
+            model.attributeName = [NSString stringWithFormat:@"(%ld,%ld)",index,y];
+            [mu2 addObject:model];
+        }
+        [mu addObject:mu2];
+    }
+    return mu;
+}
 @end

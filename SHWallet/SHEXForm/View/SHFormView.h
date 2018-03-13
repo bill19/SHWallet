@@ -22,8 +22,9 @@
 @end
 
 @interface SHFormView : UIView
-- (instancetype)initWithFrame:(CGRect)frame formTitleSource:(NSArray <SHFormModel *>*)formTitleSource formLitsSource:(NSArray <SHFormModel *>*)formLitsSource ;
+
+- (instancetype)initWithFrame:(CGRect)frame X_Axis:(NSArray <SHFormModel *>*)X_Axis Y_Axis:(NSArray <SHFormModel *>*)Y_Axis Origin:(NSString *)origin;
 /***SHFormViewDelegate代理事件*/
 @property (nonatomic, weak) id <SHFormViewDelegate> delegate;
-
+@property (nonatomic, strong) NSArray <NSArray <SHFormModel *>*>*formDataSource;
 @end

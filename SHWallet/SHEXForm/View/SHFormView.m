@@ -15,18 +15,18 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITableView *tableView;
-/**数据表格的标题数据*/
-@property (nonatomic, strong) NSArray <SHFormModel *>*formTitleSource;
-/**数据表格的列表标题数据*/
-@property (nonatomic, strong) NSArray <SHFormModel *>*formLitsSource;
+@property (nonatomic, strong) NSArray <SHFormModel *>*X_AxisSource;
+@property (nonatomic, strong) NSArray <SHFormModel *>*Y_AxisSource;
+@property (nonatomic, strong) NSString *originPoint;
 @end
 @implementation SHFormView
 
-- (instancetype)initWithFrame:(CGRect)frame formTitleSource:(NSArray <SHFormModel *>*)formTitleSource formLitsSource:(NSArray <SHFormModel *>*)formLitsSource {
+- (instancetype)initWithFrame:(CGRect)frame X_Axis:(NSArray <SHFormModel *>*)X_Axis Y_Axis:(NSArray <SHFormModel *>*)Y_Axis Origin:(NSString *)origin {
     self = [super initWithFrame:frame];
     if (self) {
-        self.formTitleSource = formTitleSource;
-        self.formLitsSource  = formLitsSource;
+        self.X_AxisSource = X_Axis;
+        self.Y_AxisSource = Y_Axis;
+        self.originPoint = origin;
         [self creatTableListViewUI];
     }
     return self;
@@ -35,23 +35,23 @@
 - (void)creatTableListViewUI {
     //整体布局 右 除了第一列以外的底层布局
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(kFirstCellWidth, 0,self.frame.size.width - kFirstCellWidth, self.frame.size.height)];
-    if (kNormalCellWidth * ([[SHFormConfig creatFormNormalTitles] count] - 1) > CGRectGetWidth(_scrollView.frame)) {
-        _scrollView.contentSize = CGSizeMake(kNormalCellWidth * (self.formLitsSource.count - 1), _scrollView.frame.size.height);
-    }
+
+    _scrollView.contentSize = CGSizeMake(kNormalCellWidth * ([[SHFormConfig creatX_Axis] count]), _scrollView.frame.size.height);
     _scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:_scrollView];
     //坐标为0,0的坐标点 原点
     UILabel * originLabel = [SHFormConfig creatFormTitleLabel];
+    originLabel.text = _originPoint;
     originLabel.frame = CGRectMake(0, 0, kFirstCellWidth, kNormalCellHeight);
     [self addSubview:originLabel];
 
     [self.tableView registerClass:[SHFormCell class] forCellReuseIdentifier:NSStringFromClass([SHFormCell class])];
     [self addSubview:self.tableView];
-    //上层布局 右
-    for (NSInteger index = 0; index < [[SHFormConfig creatFormNormalTitles] count]; index ++) {
+
+    for (NSInteger index = 0; index < [[SHFormConfig creatX_Axis] count]; index ++) {
         UILabel *normalLab = [SHFormConfig creatFormNormalLabel];
         normalLab.frame = CGRectMake(index * kNormalCellWidth, 0, kNormalCellWidth, kNormalCellHeight);
-        normalLab.text = [[SHFormConfig creatFormNormalTitles] objectAtIndex:index];
+        normalLab.text = [[[SHFormConfig creatX_Axis] objectAtIndex:index] attributeName];
         [_scrollView addSubview:normalLab];
     }
     [_scrollView addSubview:self.collectionView];
@@ -63,7 +63,7 @@
 
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, kNormalCellHeight, kNormalCellWidth*(_formLitsSource.count - 1), self.frame.size.height - kNormalCellHeight) collectionViewLayout:[SHFormConfig creatFormNormalLayout]];
+        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, kNormalCellHeight, kNormalCellWidth*(_Y_AxisSource.count - 1), self.frame.size.height - kNormalCellHeight) collectionViewLayout:[SHFormConfig creatFormNormalLayout]];
         collectionView.backgroundColor = [UIColor whiteColor];
         collectionView.dataSource = self;
         collectionView.delegate = self;
@@ -83,15 +83,16 @@
 
 #pragma mark ---- UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return _formLitsSource.count;
+    return _Y_AxisSource.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _formLitsSource.count - 1;
+    return _X_AxisSource.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SHFormCollectionCell *cell = (SHFormCollectionCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SHFormCollectionCell class]) forIndexPath:indexPath];
-    cell.formModel = [_formLitsSource objectAtIndex:indexPath.row];
+    NSArray *formSource = [self.formDataSource objectAtIndex:indexPath.section];
+    cell.formModel = [formSource objectAtIndex:indexPath.item];
     return cell;
 }
 
@@ -170,7 +171,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.formTitleSource.count;
+    return _Y_AxisSource.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -179,7 +180,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SHFormCell *cell = [SHFormCell cellWithTableView:tableView];
-    cell.listModel = [self.formTitleSource objectAtIndex:indexPath.row];
+    cell.listModel = [_Y_AxisSource objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -193,17 +194,22 @@
     return kNormalCellHeight;
 }
 
-- (NSArray<SHFormModel *> *)formLitsSource {
-    if (!_formLitsSource) {
-        _formLitsSource = [NSArray array];
+- (NSArray<SHFormModel *> *)X_AxisSource {
+    if (!_X_AxisSource) {
+        _X_AxisSource = [NSArray array];
     }
-    return _formLitsSource;
+    return _X_AxisSource;
 }
 
-- (NSArray<SHFormModel *> *)formTitleSource {
-    if (!_formTitleSource) {
-        _formTitleSource = [NSArray array];
+- (NSArray<SHFormModel *> *)Y_AxisSource {
+    if (!_Y_AxisSource) {
+        _Y_AxisSource = [NSArray array];
     }
-    return _formTitleSource;
+    return _Y_AxisSource;
 }
+
+- (void)setFormDataSource:(NSArray<NSArray<SHFormModel *> *> *)formDataSource {
+    _formDataSource = formDataSource;
+}
+
 @end

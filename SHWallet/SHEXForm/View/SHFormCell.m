@@ -7,7 +7,8 @@
 //
 
 #import "SHFormCell.h"
-
+#import "SHFormConfig.h"
+#import "Masonry.h"
 @interface SHFormCell ()
 @property (nonatomic, strong) UILabel *listLab;
 @end
@@ -17,25 +18,36 @@
 + (SHFormCell *)cellWithTableView:(UITableView *)tableView {
     NSString *ID = NSStringFromClass([SHFormCell class]);
     SHFormCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell){
+    if (!cell) {
         cell = [[SHFormCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-
-    if (self) {
-        _listLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
-        _listLab.layer.borderColor = [UIColor blackColor].CGColor;
-        _listLab.layer.borderWidth = 1.f;
-        _listLab.textAlignment = NSTextAlignmentCenter;
-        _listLab.font = [UIFont systemFontOfSize:17.f];
-        [self addSubview:_listLab];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setAccessoryType:UITableViewCellAccessoryNone];
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [self setupSubViews];
+        [self setupLayout];
     }
     return self;
+}
+
+- (void)setupSubViews {
+    UILabel *listLab = [[UILabel alloc] init];
+    listLab.layer.borderColor = [UIColor blackColor].CGColor;
+    listLab.layer.borderWidth = 1.f;
+    listLab.textAlignment = NSTextAlignmentCenter;
+    listLab.font = [UIFont systemFontOfSize:14.f];
+    _listLab = listLab;
+    [self.contentView addSubview:_listLab];
+}
+
+- (void)setupLayout {
+    [_listLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.contentView);
+    }];
 }
 
 - (void)setListModel:(SHFormModel *)listModel {

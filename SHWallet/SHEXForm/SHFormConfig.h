@@ -36,4 +36,24 @@ static NSString *const kFooterIdentifier = @"kFormCollectionFooter";
  @return 返回 创建内容样式
  */
 + (UILabel *)creatFormNormalLabel ;
+
+/**
+ 创建标题样式 Title信息  最上面那一行样式
+
+ @return 返回 最上面那一行样式
+ */
++ (UILabel *)creatFormUpTitleLabel ;
+
+/**
+ 创建标题样式 Title信息  最左边面那一行样式
+
+ @return 返回 最左边面那一行样式
+ */
++ (UILabel *)creatFormLeftTitleLabel ;
+/**
+ 创建表格上表信息
+
+ @return 上表信息数值
+ */
++ (NSArray *)creatFormNormalTitles ;
 @end

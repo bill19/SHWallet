@@ -7,6 +7,7 @@
 //
 
 #import "SHFormConfig.h"
+#import "UIColor+KNColor.h"
 @implementation SHFormConfig
 
 /**
@@ -35,12 +36,12 @@
  */
 + (UILabel *)creatFormTitleLabel {
     UILabel * originLabel = [[UILabel alloc] init];
-    originLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    originLabel.layer.borderColor = [UIColor colorWithHexString:@"#DDDDDD"].CGColor;
     originLabel.backgroundColor = [UIColor redColor];
-    originLabel.layer.borderWidth = 1.f;
+    originLabel.layer.borderWidth = .3f;
     originLabel.textAlignment = NSTextAlignmentCenter;
-    originLabel.font = [UIFont systemFontOfSize:17.f];
-    originLabel.text = @"原点";
+    originLabel.font = [UIFont systemFontOfSize:14.f];
+    originLabel.text = @"经营指数";
     return originLabel;
 }
 
@@ -51,12 +52,51 @@
  */
 + (UILabel *)creatFormNormalLabel {
     UILabel * normalLabel = [[UILabel alloc] init];
-    normalLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    normalLabel.layer.borderColor = [UIColor colorWithHexString:@"#DDDDDD"].CGColor;
     normalLabel.backgroundColor = [UIColor yellowColor];
-    normalLabel.layer.borderWidth = 1.f;
+    normalLabel.layer.borderWidth = .3f;
     normalLabel.textAlignment = NSTextAlignmentCenter;
-    normalLabel.font = [UIFont systemFontOfSize:17.f];
+    normalLabel.font = [UIFont systemFontOfSize:14.f];
     return normalLabel;
+}
+
+/**
+ 创建标题样式 Title信息  最上面那一行样式
+
+ @return 返回 最上面那一行样式
+ */
++ (UILabel *)creatFormUpTitleLabel {
+    UILabel * normalLabel = [[UILabel alloc] init];
+    normalLabel.layer.borderColor = [UIColor colorWithHexString:@"#DDDDDD"].CGColor;
+    normalLabel.backgroundColor = [UIColor yellowColor];
+    normalLabel.layer.borderWidth = .3f;
+    normalLabel.textAlignment = NSTextAlignmentCenter;
+    normalLabel.font = [UIFont systemFontOfSize:14.f];
+    return normalLabel;
+}
+
+/**
+ 创建标题样式 Title信息  最左边面那一行样式
+
+ @return 返回 最左边面那一行样式
+ */
++ (UILabel *)creatFormLeftTitleLabel {
+    UILabel * normalLabel = [[UILabel alloc] init];
+    normalLabel.layer.borderColor = [UIColor colorWithHexString:@"#DDDDDD"].CGColor;
+    normalLabel.backgroundColor = [UIColor yellowColor];
+    normalLabel.layer.borderWidth = .3f;
+    normalLabel.textAlignment = NSTextAlignmentCenter;
+    normalLabel.font = [UIFont systemFontOfSize:14.f];
+    return normalLabel;
+}
+
+/**
+ 创建表格上表信息
+
+ @return 上表信息数值
+ */
++ (NSArray *)creatFormNormalTitles {
+    return @[@"经营指数",@"本期数",@"上期数",@"环比"];
 }
 
 @end

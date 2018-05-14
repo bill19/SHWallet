@@ -24,13 +24,14 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupItemView];
 
-    _tableListView = [[SHFormView alloc] initWithFrame:CGRectMake(0, 100,[UIScreen mainScreen].bounds.size.width, 400)];
-    _tableListView.originPointModel = [SHFormModel creatFormModelTitle:@"经营指标"];
-    _tableListView.X_AxisSource = [SHFormConfig creatX_Axis];
-    _tableListView.Y_AxisSource = [SHFormConfig creatY_Axis];
-    _tableListView.formDataSource = [SHFormConfig creatFormDataSource];
-    _tableListView.delegate = self;//设置代理作用:选中某一个 可自行修改
-    [self.view addSubview:_tableListView];
+    
+//    _tableListView = [[SHFormView alloc] initWithFrame:CGRectMake(0, 100,[UIScreen mainScreen].bounds.size.width, 400)];
+//    _tableListView.originPointModel = [SHFormModel creatFormModelTitle:@"经营指标"];
+//    _tableListView.X_AxisSource = [SHFormConfig creatX_Axis];
+//    _tableListView.Y_AxisSource = [SHFormConfig creatY_Axis];
+//    _tableListView.formDataSource = [SHFormConfig creatFormDataSource];
+//    _tableListView.delegate = self;//设置代理作用:选中某一个 可自行修改
+//    [self.view addSubview:_tableListView];
 }
 - (void)successOfCollectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"点击第%ld行 第%ld个",indexPath.section,indexPath.row);

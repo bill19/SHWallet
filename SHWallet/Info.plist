@@ -22,14 +22,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>如果不允许，你将无法在麦田在线中使用蓝牙定位功能。</string>
 	<key>NSCalendarsUsageDescription</key>
@@ -48,6 +40,14 @@
 	<string>如果不允许，你将无法在麦田在线中将朋友发送的图片保存到系统相册。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>如果不允许，你将无法在麦田在线中发送系统相册里的照片给朋友。</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

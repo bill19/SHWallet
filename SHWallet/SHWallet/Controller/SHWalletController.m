@@ -11,16 +11,16 @@
 #import "SHWalletCell.h"
 #import "Masonry.h"
 #import "MJExtension.h"
-#import "CardIO.h"
+//#import "CardIO.h"
 #import "Toast.h"
 #import "LRKeychain.h"
-#import "CardIOPaymentViewControllerDelegate.h"
+//#import "CardIOPaymentViewControllerDelegate.h"
 static NSString *KcardKey = @"SHCARDKEY";
 static NSString *KcardNum = @"卡号";
 static NSString *KcardOther = @"备注信息";
 static NSString *KcardBank = @"银行";
 static NSString *KcardCvv = @"Cvv";
-@interface SHWalletController () <UITableViewDelegate,UITableViewDataSource,SHWalletCellDelegate,CardIOPaymentViewControllerDelegate>
+@interface SHWalletController () <UITableViewDelegate,UITableViewDataSource,SHWalletCellDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray <SHWalletModel *>*tableDataSource;
 @property (nonatomic, strong) SHWalletModel *changeModel;
@@ -47,7 +47,7 @@ static NSString *KcardCvv = @"Cvv";
     self.title = @"卡包";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCard:)],[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(scanCard:)]];
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCard:)]];
 }
 
 #pragma mark layout subviews
@@ -59,15 +59,15 @@ static NSString *KcardCvv = @"Cvv";
 #pragma mark - button action
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [CardIOUtilities preload];
+//    [CardIOUtilities preload];
 }
 
-//开始扫描
-- (void)scanCard:(id)sender {
-    self.changeModel = [[SHWalletModel alloc] init];
-    CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
-    [self presentViewController:scanViewController animated:YES completion:nil];
-}
+////开始扫描
+//- (void)scanCard:(id)sender {
+//    self.changeModel = [[SHWalletModel alloc] init];
+//    CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
+//    [self presentViewController:scanViewController animated:YES completion:nil];
+//}
 
 /**
  新增
@@ -77,12 +77,12 @@ static NSString *KcardCvv = @"Cvv";
     [self showAddMessage:[SHWalletModel new]];
 }
 
-//取消扫描
-- (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)scanViewController {
-    NSLog(@"User canceled payment info");
-    // Handle user cancellation here...
-    [scanViewController dismissViewControllerAnimated:YES completion:nil];
-}
+////取消扫描
+//- (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)scanViewController {
+//    NSLog(@"User canceled payment info");
+//    // Handle user cancellation here...
+//    [scanViewController dismissViewControllerAnimated:YES completion:nil];
+//}
 
 - (void)showAddMessage:(SHWalletModel *)model {
     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"添加信息" message:@"添加一个银行卡信息" preferredStyle:UIAlertControllerStyleAlert];
@@ -132,16 +132,16 @@ static NSString *KcardCvv = @"Cvv";
         self.changeModel.cardOther = textField.text;
     }
 }
-//扫描完成
-- (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)scanViewController {
-    //扫描结果
-    [scanViewController dismissViewControllerAnimated:YES completion:nil];
-    _changeModel.cardNum = info.cardNumber;
-    _changeModel.cardOther = [NSString stringWithFormat:@"%ld / %ld",info.expiryMonth,info.expiryYear];
-    _changeModel.cardCvv = info.cvv;
-    _changeModel.cardBank = info.cardholderName;
-    [self showAddMessage:_changeModel];
-}
+////扫描完成
+//- (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)scanViewController {
+//    //扫描结果
+//    [scanViewController dismissViewControllerAnimated:YES completion:nil];
+//    _changeModel.cardNum = info.cardNumber;
+//    _changeModel.cardOther = [NSString stringWithFormat:@"%ld / %ld",info.expiryMonth,info.expiryYear];
+//    _changeModel.cardCvv = info.cvv;
+//    _changeModel.cardBank = info.cardholderName;
+//    [self showAddMessage:_changeModel];
+//}
 #pragma mark - gesture
 
 #pragma mark - KVO

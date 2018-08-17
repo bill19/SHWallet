@@ -11,7 +11,7 @@
 @interface SHItemModel : NSObject
 @property (nonatomic, copy) NSString *image;
 @property (nonatomic, copy) NSString *title;
-
-+ (SHItemModel *)creatModelWithImage:(NSString *)image Title:(NSString *)title;
+@property (nonatomic, assign) NSInteger ID;
++ (SHItemModel *)creatModelWithImage:(NSString *)image Title:(NSString *)title ID:(NSInteger)ID;
 
 @end

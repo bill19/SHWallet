@@ -8,12 +8,14 @@
 
 #import "ViewController.h"
 #import "SHWalletController.h"
+#import "SHCalViewController.h"
 #import "TouchIDManager.h"
 #import "SHItem.h"
 #import "SHFormView.h"
+#import "SHItemModel.h"
 @interface ViewController ()<SHItemDelegate,SHFormViewDelegate>
 @property(strong,nonatomic) SHFormView *tableListView;
-
+@property (nonatomic, strong) NSArray *dataSource;
 @end
 
 @implementation ViewController
@@ -38,21 +40,31 @@
 }
 
 - (void)setupItemView {
-    CGFloat itemWidth = [UIScreen mainScreen].bounds.size.width * 0.25;
-    SHItem *walletItem = [[SHItem alloc] initWithFrame:CGRectMake(0, 100, itemWidth, itemWidth*2)];
-    walletItem.itemModel = [SHItemModel creatModelWithImage:@"sh_wallet" Title:@"卡包"];
-    walletItem.delegate = self;
-    [self.view addSubview:walletItem];
+    for (NSInteger index = 0; index < self.dataSource.count; index ++) {
+        CGFloat itemWidth = [UIScreen mainScreen].bounds.size.width * 0.25;
+        SHItem *walletItem = [[SHItem alloc] initWithFrame:CGRectMake(index * itemWidth + 20, 100, itemWidth, itemWidth*2)];
+        walletItem.itemModel = _dataSource[index];
+        walletItem.delegate = self;
+        [self.view addSubview:walletItem];
+    }
 }
 
 - (void)itemDidSelect:(SHItemModel *)itemModel {
-
-    if ([TouchIDManager sharedManager].canUseTouchId) {
-        [[TouchIDManager sharedManager] touchIDWithlocalizedFallbackTitle:@"验证" localizedReason:@"指纹验证" success:^(BOOL success, NSError *error) {
-            [self.navigationController pushViewController:[[SHWalletController alloc] init] animated:YES];
-        }];
-    }else{
+    if (itemModel.ID == 1) {
         [self.navigationController pushViewController:[[SHWalletController alloc] init] animated:YES];
     }
+    if (itemModel.ID == 2) {
+        [self.navigationController pushViewController:[[SHCalViewController alloc] init] animated:YES];
+    }
+}
+
+- (NSArray *)dataSource {
+    if (!_dataSource) {
+        NSMutableArray *mu = [NSMutableArray array];
+        [mu addObject:[SHItemModel creatModelWithImage:@"sh_wallet" Title:@"卡包" ID:1]];
+        [mu addObject:[SHItemModel creatModelWithImage:@"sh_wallet" Title:@"计算器" ID:2]];
+        _dataSource = mu;
+    }
+    return _dataSource;
 }
 @end

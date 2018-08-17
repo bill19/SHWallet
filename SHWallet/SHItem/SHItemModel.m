@@ -10,10 +10,12 @@
 
 @implementation SHItemModel
 
-+ (SHItemModel *)creatModelWithImage:(NSString *)image Title:(NSString *)title {
++ (SHItemModel *)creatModelWithImage:(NSString *)image Title:(NSString *)title ID:(NSInteger)ID;{
     SHItemModel *model = [[SHItemModel alloc] init];
     model.image = image;
     model.title = title;
+    model.ID = ID;
     return model;
 }
+
 @end

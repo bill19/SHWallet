@@ -46,6 +46,8 @@
 
 - (void)calButtonClick:(UIButton *)sender {
 
+    [self.textRMB isFirstResponder];
+    
     if (self.calclick) {
         self.calclick(self.textRMB.text);
     }

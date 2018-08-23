@@ -22,6 +22,7 @@
     [self.view addSubview:self.calView];
     __weak __typeof(self) weakSelf = self;
     self.calView.calclick = ^(NSString *text) {
+        [weakSelf.view endEditing:YES];
         weakSelf.calView.showLabel.text = [weakSelf calMaxWithRMB:[text floatValue]];
     };
 }

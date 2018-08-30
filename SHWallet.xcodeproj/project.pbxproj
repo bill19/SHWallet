@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B31145621379DEE00E2DDEB /* SHItemBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B31145521379DEE00E2DDEB /* SHItemBanner.m */; };
+		3B3114592137C80100E2DDEB /* SHItemBannerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3114582137C80100E2DDEB /* SHItemBannerConfig.m */; };
 		3BC515DC21267B6900580D47 /* SHCalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC515DB21267B6900580D47 /* SHCalViewController.m */; };
 		3BC515E121267B8A00580D47 /* LJCalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC515DF21267B8A00580D47 /* LJCalView.m */; };
 		3BC515E221267B8A00580D47 /* LJFastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC515E021267B8A00580D47 /* LJFastModel.m */; };
@@ -63,6 +65,10 @@
 /* Begin PBXFileReference section */
 		1A079DE15925B14BD3ED6463 /* Pods-SHWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHWallet/Pods-SHWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		34C9E6EE27B0CB7AC52BA545 /* Pods-SHWallet.xxxxx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHWallet.xxxxx.xcconfig"; path = "Pods/Target Support Files/Pods-SHWallet/Pods-SHWallet.xxxxx.xcconfig"; sourceTree = "<group>"; };
+		3B31145421379DEE00E2DDEB /* SHItemBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHItemBanner.h; sourceTree = "<group>"; };
+		3B31145521379DEE00E2DDEB /* SHItemBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHItemBanner.m; sourceTree = "<group>"; };
+		3B3114572137C80100E2DDEB /* SHItemBannerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHItemBannerConfig.h; sourceTree = "<group>"; };
+		3B3114582137C80100E2DDEB /* SHItemBannerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHItemBannerConfig.m; sourceTree = "<group>"; };
 		3BC515DA21267B6900580D47 /* SHCalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCalViewController.h; sourceTree = "<group>"; };
 		3BC515DB21267B6900580D47 /* SHCalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCalViewController.m; sourceTree = "<group>"; };
 		3BC515DD21267B8900580D47 /* LJFastModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJFastModel.h; sourceTree = "<group>"; };
@@ -158,6 +164,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B31145321379D9A00E2DDEB /* HomePageItemBanner */ = {
+			isa = PBXGroup;
+			children = (
+				3B31145421379DEE00E2DDEB /* SHItemBanner.h */,
+				3B31145521379DEE00E2DDEB /* SHItemBanner.m */,
+				3B3114572137C80100E2DDEB /* SHItemBannerConfig.h */,
+				3B3114582137C80100E2DDEB /* SHItemBannerConfig.m */,
+			);
+			path = HomePageItemBanner;
+			sourceTree = "<group>";
+		};
 		3BC515D921267B5400580D47 /* SHCal */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +232,7 @@
 				6D2E05DA204F848300D14159 /* AppDelegate.m */,
 				6D2E05DC204F848300D14159 /* ViewController.h */,
 				6D2E05DD204F848300D14159 /* ViewController.m */,
+				3B31145321379D9A00E2DDEB /* HomePageItemBanner */,
 				3BC515D921267B5400580D47 /* SHCal */,
 				6D2E0625204F8FCB00D14159 /* SHItem */,
 				6D2E061B204F8F1000D14159 /* Other */,
@@ -563,6 +581,7 @@
 				6D8D788320528CA800BFDF07 /* SHFormModel.m in Sources */,
 				3BC515DC21267B6900580D47 /* SHCalViewController.m in Sources */,
 				6D8D788520528CA800BFDF07 /* SHFormConfig.m in Sources */,
+				3B3114592137C80100E2DDEB /* SHItemBannerConfig.m in Sources */,
 				6D2E05DB204F848300D14159 /* AppDelegate.m in Sources */,
 				6D4C3295205115E400A57F2A /* LRKeychain.m in Sources */,
 				6D2E0614204F8B1200D14159 /* SHItem.m in Sources */,
@@ -570,6 +589,7 @@
 				6D8D788620528CA800BFDF07 /* SHFormView.m in Sources */,
 				6D2E062E204F927800D14159 /* UIColor+KNColor.m in Sources */,
 				6D4C32902051112D00A57F2A /* TouchIDManager.m in Sources */,
+				3B31145621379DEE00E2DDEB /* SHItemBanner.m in Sources */,
 				3BC515E121267B8A00580D47 /* LJCalView.m in Sources */,
 				6DE2A174204FE87F000AC5B1 /* SHWalletModel.m in Sources */,
 			);
